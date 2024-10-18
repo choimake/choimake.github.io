@@ -4,102 +4,362 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>前山 弘樹の職務経歴書</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" href="/assets/images/favicon.ico">
 </head>
-<body>
-  <main>
-    <section>
-      <h1>職務経歴書</h1>
-    </section>
-    <section>
-      <h2>プロフィール</h2>
-      <p>
-        ソフトウェアエンジニアとして、主にバックエンド領域を中心にシステム開発・運用において豊富な経験を持っています。プロジェクトリーダーとして、プロジェクトをリードした経験もあります。<br>
-        エンジニアリングマネージャーとしては、メンバーのメンタリング、採用プロセスの最適化、チーム運営に積極的に携わってきました。<br>
-        Google Cloud認定トレーナーとしても活動し、資格取得に向けたトレーニングや技術書の執筆経験を通じて、技術普及に貢献しています。<br>
-        自身の強みとして、柔軟なコミュニケーション能力と不確定な状況でも自律的にプロジェクトを推進できる力を発揮しています。<br>
-        いかなる挑戦に対してもポジティブに向き合い、状況を楽しみながら、成果を最大化することを重視しています。<br>
-      </p>
-    </section>
-    <section>
-      <h2>言語</h2>
-      <ul>
-        <li>日本語: ネイティブ</li>
-        <li>英語: ドキュメントを読むことができる</li>
-      </ul>
-    </section>
-    <section>
-      <h2>スキル</h2>
-      <ul>
-        <li>プログラミング言語: Java、Golang、PHP、Swift</li>
-        <li>フレームワーク: Spring Boot、go-chi、Laravel</li>
-        <li>データベース: MySQL、Firestore、Datastore、Cloud Spanner</li>
-        <li>クラウド: Google Cloud、AWS</li>
-        <li>バージョン管理: Git</li>
-        <li>分散トレース: OpenTelemetry</li>
-        <li>メッセージングキュー: Pub/Sub</li>
-        <li>その他: 採用</li>
-      </ul>
-    </section>
-    <section>
-      <h2>資格</h2>
-      <ul>
-        <li>Google Cloud Associate Cloud Engineer ( 2022/4/5 ~ )</li>
-        <li>Google Cloud Digital Leader ( 2022/4/11 ~ )</li>
-        <li>Google Cloud Professional Cloud Architect ( 2022/8/2 ~ )</li>
-        <li>Google Cloud Professional Cloud Developer ( 2022/10/6 ~ )</li>
-        <li>Google Cloud Professional Data Engineer ( 2022/10/11 ~ )</li>
-        <li>Google Cloud Professional Cloud Security Engineer ( 2022/11/9 ~ )</li>
-        <li>Google Cloud Authorized Trainer ( 2023/9/22 ~ )</li>
-        <li>Google Cloud Professional Cloud DevOps Engineer ( 2024/2/20 ~ )</li>
-        <li>Google Cloud Professional Cloud Network Engineer ( 2024/10/1 ~ )</li>
-        <li>3級テクニカルライティング ( 2023/3/31 認定 )</li>
-        <li>LPIC level 1</li>
-        <li>ITパスポート</li>
-        <li>ビジネス実務文書検定 3級</li>
-        <li>ビジネス実務マナー検定 3級</li>
-      </ul>
-    </section>
-    <p>
-      <h2>職務経歴</h2>
+<body class="bg-gray-100 text-gray-900">
+  <div class="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+    <main class="space-y-8">
+      <section class="text-center">
+        <h1 class="text-5xl font-bold text-blue-600 mb-4">職務経歴書</h1>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4">プロフィール</h2>
+        <ul class="list-none pl-0 text-lg leading-relaxed text-gray-700 space-y-2">
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-briefcase"></i></span>
+            ソフトウェアエンジニアとして、主にバックエンド領域を中心にシステム開発・運用において豊富な経験を持っています。プロジェクトリーダーとして、プロジェクトをリードした経験もあります。
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-users-cog"></i></span>
+            エンジニアリングマネージャーとしての経験もあり、メンバーのメンタリング、採用プロセスの最適化、チーム運営に積極的に携わってきました。
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-chalkboard-teacher"></i></span>
+            Google Cloud認定トレーナーとしても活動し、資格取得に向けたトレーニングや技術書の執筆経験を通じて、技術普及に貢献しています。
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-comments"></i></span>
+            自身の強みとして、柔軟なコミュニケーション能力と不確定な状況でも自律的にプロジェクトを推進できる力を発揮しています。
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-smile"></i></span>
+            いかなる挑戦に対してもポジティブに向き合い、状況を楽しみながら、成果を最大化することを重視しています。
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4">言語</h2>
+        <ul class="list-none pl-0 text-lg leading-relaxed text-gray-700 space-y-2">
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-globe"></i></span>
+            日本語: ネイティブ
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-book"></i></span>
+            英語: ドキュメントを読むことができる
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4">スキル</h2>
+        <ul class="list-none pl-0 text-lg leading-relaxed text-gray-700 space-y-2">
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-code"></i></span>
+            プログラミング言語: Java、Golang、PHP、Swift
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-layer-group"></i></span>
+            フレームワーク: Spring Boot、go-chi、Laravel
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-database"></i></span>
+            データベース: MySQL、Firestore、Datastore、Cloud Spanner
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-cloud"></i></span>
+            クラウド: Google Cloud、AWS
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-code-branch"></i></span>
+            バージョン管理: Git
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-network-wired"></i></span>
+            分散トレース: OpenTelemetry
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-envelope-open-text"></i></span>
+            メッセージングキュー: Pub/Sub
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-user-plus"></i></span>
+            その他: 採用
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4">資格</h2>
+        <ul class="list-none pl-0 text-lg leading-relaxed text-gray-700 space-y-2">
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-certificate"></i></span>
+            Google Cloud Associate Cloud Engineer ( 2022年4月5日 ~ )
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-certificate"></i></span>
+            Google Cloud Digital Leader ( 2022年4月11日 ~ )
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-certificate"></i></span>
+            Google Cloud Professional Cloud Architect ( 2022年8月2日 ~ )
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-certificate"></i></span>
+            Google Cloud Professional Cloud Developer ( 2022年10月6日 ~ )
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-certificate"></i></span>
+            Google Cloud Professional Data Engineer ( 2022年10月11日 ~ )
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-certificate"></i></span>
+            Google Cloud Professional Cloud Security Engineer ( 2022年11月9日 ~ )
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-chalkboard-teacher"></i></span>
+            Google Cloud Authorized Trainer ( 2023年9月22日 ~ )
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-certificate"></i></span>
+            Google Cloud Professional Cloud DevOps Engineer ( 2024年2月20日 ~ )
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-certificate"></i></span>
+            Google Cloud Professional Cloud Network Engineer ( 2024年10月1日 ~ )
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-certificate"></i></span>
+            3級テクニカルライティング ( 2023年3月31日 認定 )
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-certificate"></i></span>
+            LPIC level 1
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-certificate"></i></span>
+            ITパスポート
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-certificate"></i></span>
+            ビジネス実務文書検定 3級
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 text-blue-500"><i class="fas fa-certificate"></i></span>
+            ビジネス実務マナー検定 3級
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4">職務経歴</h2>
 
-      <h3>クラウドエース株式会社</h3>
-      <p>2021年10月 〜 現在</p>
-      <h4>ソフトウェアエンジニア</h4>
-      <p>大規模POSシステムのリプレイス案件にて、アプリチームのプロジェクトリーダーとして活動。設計レビュー、要件整理、タスク管理、アプリ領域における技術的な方針策定と修正、技術検証、問い合わせ対応、アプリ開発などの行い、案件の進捗に貢献。</p>
-      <p>Google Cloudの公式認定トレーナーとして、Google Cloud Associate Cloud Engineer や Google Cloud Professional Cloud Architect の資格対策用を中心に、お客様にトレーニングを実施し、Google Cloudの普及に貢献。これまでに頂いたトレーニング評価はほぼ満点。</p>
-      <p>Google Cloud Associate Cloud Engineerの資格対策本の執筆案件にて、執筆者の一人として活動。6章以降の内容の策定と7章、8章の執筆、及び全章のレビューと校正を実施し、書籍の作成に貢献した。本案件で執筆した書籍は「<a href="https://book.impress.co.jp/books/1122101107" target="_blank">徹底攻略 Google Cloud認定資格 Associate Cloud Engineer教科書</a>」という名前で出版。</p>
-      <p>車の保険システムの開発にて、開発メンバーとして活動。詳細設計書の作成支援と技術検証を行い、案件の進捗に貢献した。</p>
-      <p>メディアの印刷システムのGoogle CloudへのLift & Shiftのための技術支援案件にて、メンバーの一人として活動。設計レビューやPocの開発、オンボーディング体制の確立、新規メンバーの技術フォローなどを行い、案件の進捗に貢献した。</p>
-      <p>論文データのデータマイニングシステムの開発にて、メンバーとして活動。バックエンドのAPIの開発を行い、案件に貢献した。</p>
-      <h4>エンジニアリングマネージャー</h4>
-      <p>1on1を実施し、メンバー皆のメンタリング、資格取得支援、業務改善支援を実施した。これにより、メンバーの資格取得数を3件向上、メンバーから他メンバーのフィードバックの質の向上に貢献した。</p>
-      <p>バックエンドチームの採用プロセスの運営全般を担当し、業務改善とドキュメント化を推進した。これにより、採用における上司の業務負担を50%軽減し、採用におけるナレッジをチーム全体で共有できるように体系化した。さらに、構造化面接を導入し採用基準を明確化することで、効率的かつ質の高い採用活動を実現し、組織の持続的な成長を支える基盤を構築することに成功した。</p>
-      <h3>株式会社アスペア</h3>
-      <p>2020年1月 〜 2021年9月</p>
-      <h4>ソフトウェアエンジニア</h4>
-      <p>採用プラットフォームの新規開発案件（SESで参画）にて、メンバーとして活動。2ヶ月の間、バックエンドのAPIを1日平均2本開発し、プロジェクトの進捗に貢献した。</p>
-      <p>掲示板サイトの新規開発開発案件（SESで参画）にて、メンバーとして活動。サイトで使用するバックエンドのAPIの開発、S3にアップロードされた画像ファイルのウイルスチェック機能の追加、別サイトと連携するためのAPIの開発などを担当し、プロジェクトの進捗に貢献した。</p>
-      <p>メディア系のwebサイトのCMS化案件（SESで参画）にて、メンバーとして活動。システムが実現したい処理の全体フローのうち20%ほどの開発を完了させ、案件の進捗に貢献した。</p>
-      <p>とあるイベントのwebサイト新規開発案件（SESで参画）にて、メンバーとして活動。TwitterのAPIを実行し、イベント関連のTweetをWebサイトに出力するという処理を開発した。またインフラ担当の方とのコミュニケーションも行い、デプロイ方法や運用についての擦り合わせも行った。</p>
-      <p>Webメディア(CMS)のシステムの開発、運用（SESで参画）にて、メンバーとして活動。機能追加やコードレビューを実施し、システムの機能の追加によるユーザー満足度の向上やコードの品質向上に貢献した。</p>
-      <p>社内の勤怠入力の簡略化ツールの新規開発案件にて、メンバーとして活動。要件を元に勤怠入力の手間を30%削減するツールを開発し、社員の勤怠入力の工数カットに貢献した。</p>
-      <p>案件の参画ができなかった自主学習期間において、23冊の書籍を読破。案件参画のための知識獲得を実施した。</p>
-      <h3>個人事業主</h3>
-      <p>2019年10月 〜 現在</p>
-      <h4>ソフトウェアエンジニア</h4>
-      <p>既存の顧客管理システムのcloneアプリの開発依頼があり、単独で、開発とインフラ構築を担当した。納品済。</p>
-      <h4>プログラミングスクール講師</h4>
-      <p>プログラミングスクールの講師として、プログラミングを学びたい社会人の方々にスクールのカリキュラムに応じた指導を実施した。</p>
+        <section class="mb-6 p-4 bg-gray-200 border border-gray-300 rounded-lg">
+          <h3 class="text-2xl font-bold text-gray-700">クラウドエース株式会社</h3>
+          <p class="text-sm text-gray-600">2021年10月 〜 現在</p>
 
-      <h3>株式会社ディーエス</h3>
-      <p>2016年4月 〜 2019年9月</p>
-      <h4>ソフトウェアエンジニア</h4>
-      <p>店舗と働き手を繋ぐ、マッチングアプリの新規開発案件にて、メンバーとして活動。iOSアプリ開発担当として、アプリの開発を実施した。</p>
-      <p>某ソーシャルゲームの運用保守案件にて、メンバーとして活動。新規プラットフォーム展開、機能改修、ガチャやイベントの定期切り替え、ユーザーからの問い合わせ対応などを行い、ゲームの運用に貢献した。</p>
-      <p>日本の某ソーシャルゲームの台湾版をリリースする案件にて、メンバーとして活動。</p>
-      <p>某ソーシャルゲームの運用保守案件にて、メンバーとして活動。新規プラットフォーム展開、機能改修、ガチャやイベントの定期切り替え、ユーザーからの問い合わせ対応などを行い、ゲームの運用に貢献した。</p>
+          <div class="ml-4 mt-4">
+            <h4 class="text-lg font-semibold text-blue-600">ソフトウェアエンジニア</h4>
+            <p class="text-sm text-gray-600">2021年1月 〜 現在</p>
 
-    </section>
-  </main>
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">大規模POSシステムのリプレイス案件</h5>
+              <p class="text-sm text-gray-600">2023年12月 〜 現在</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>アプリチームのプロジェクトリーダーとして活動。設計レビュー、要件整理、タスク管理、アプリ領域における技術的な方針策定と修正、技術検証、問い合わせ対応、アプリ開発などを行い、案件の進捗に貢献。</li>
+              </ul>
+            </section>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">Google Cloudの公式認定トレーナー</h5>
+              <p class="text-sm text-gray-600">2023年9月 〜 現在</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>Google Cloudの公式認定トレーナーとして、Google Cloud Associate Cloud EngineerやGoogle Cloud Professional Cloud Architectの資格対策用トレーニングを実施。Google Cloudの普及に貢献し、これまでに頂いたトレーニング評価はほぼ満点。</li>
+              </ul>
+            </section>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">Google Cloud Associate Cloud Engineerの資格対策本の執筆案件</h5>
+              <p class="text-sm text-gray-600">2023年1月 〜 2023年8月</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>執筆者の一人として活動。6章以降の内容の策定と7章、8章の執筆、及び全章のレビューと校正を実施し、書籍の作成に貢献した。本案件で執筆した書籍は「<a href="https://book.impress.co.jp/books/1122101107" target="_blank" class="text-blue-600 font-semibold underline hover:text-blue-800">徹底攻略 Google Cloud認定資格 Associate Cloud Engineer教科書</a>」という名前で出版。</li>
+              </ul>
+            </section>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">自動車の保険システムの開発</h5>
+              <p class="text-sm text-gray-600">2023年4月 〜 2023年6月</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>開発メンバーとして活動。詳細設計書の作成支援と設計見直し、技術検証を行い、案件の進捗に貢献した。</li>
+              </ul>
+            </section>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">メディアの印刷システムのGoogle CloudへのLift & Shiftのための技術支援案件</h5>
+              <p class="text-sm text-gray-600">2022年4月 〜 2024年1月</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>メンバーの一人として活動。設計レビューやPoCの開発、オンボーディング体制の確立、新規メンバーの技術フォローなどを行い、案件の進捗に貢献した。</li>
+              </ul>
+            </section>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">論文データのデータマイニングシステムの開発</h5>
+              <p class="text-sm text-gray-600">2023年9月 〜 現在</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>開発メンバーとして活動。バックエンドのAPIの開発を行い、案件に貢献した。</li>
+              </ul>
+            </section>
+          </div>
+
+          <div class="ml-4 mt-10">
+            <h4 class="text-lg font-semibold text-blue-600">エンジニアリングマネージャー</h4>
+            <p class="text-sm text-gray-600">2023年1月 〜 2024年6月</p>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">チーム運営</h5>
+              <p class="text-sm text-gray-600">2023年1月 〜 2024年6月</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>担当しているチームのメンバーの1on1を実施し、メンバー皆のメンタリング、資格取得支援、業務改善支援を実施した。これにより、メンバーの資格取得数を3件向上、メンバーから他メンバーのフィードバックの質の向上に貢献。</li>
+              </ul>
+            </section>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">バックエンドチームの採用業務</h5>
+              <p class="text-sm text-gray-600">2023年2月 〜 2024年10月</p>
+              <ul class="list-disc pl-5 leading-slug text-gray-700">
+                <li>バックエンドチームの採用プロセスの運営全般を担当し、業務改善とドキュメント化を推進した。これにより、採用における上司の業務負担を50%軽減し、採用におけるナレッジをチーム全体で共有できるように体系化した。さらに、構造化面接を導入し採用基準を明確化することで、効率的かつ質の高い採用活動を実現し、組織の持続的な成長を支える基盤を構築することに成功。</li>
+              </ul>
+            </section>
+          </div>
+        </section>
+
+        <section class="mb-6 p-4 bg-gray-200 border border-gray-300 rounded-lg">
+          <h3 class="text-2xl font-bold text-gray-700">株式会社アスペア</h3>
+          <p class="text-sm text-gray-600">2020年1月 〜 2021年9月</p>
+
+          <div class="ml-4 mt-4">
+            <h4 class="text-lg font-semibold text-blue-600">ソフトウェアエンジニア</h4>
+            <p class="text-sm text-gray-600">2020年1月 〜 2021年9月</p>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">採用プラットフォームの新規開発案件（SES）</h5>
+              <p class="text-sm text-gray-600">2021年7月 〜 2021年8月</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>メンバーとして活動。2ヶ月の間、バックエンドのAPIを1日平均2本開発し、プロジェクトの進捗に貢献した。</li>
+              </ul>
+            </section>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">掲示板サイトの新規開発開発案件（SESで参画）</h5>
+              <p class="text-sm text-gray-600">2021年1月 〜 2021年6月</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>メンバーとして活動。サイトで使用するバックエンドのAPIの開発、S3にアップロードされた画像ファイルのウイルスチェック機能の追加、別サイトと連携するためのAPIの開発などを担当し、プロジェクトの進捗に貢献した。</li>
+              </ul>
+            </section>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">メディア系のwebサイトのCMS化案件（SESで参画）</h5>
+              <p class="text-sm text-gray-600">2020年12月 〜 2020年12月</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>メンバーとして活動。システムが実現したい処理の全体フローのうち20%ほどの開発を完了させ、案件の進捗に貢献した。</li>
+              </ul>
+            </section>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">とあるイベントのwebサイト新規開発案件（SESで参画）</h5>
+              <p class="text-sm text-gray-600">2020年12月 〜 2020年12月</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>メンバーとして活動。TwitterのAPIを実行し、イベント関連のTweetをWebサイトに出力するという処理を開発した。またインフラ担当の方とのコミュニケーションも行い、デプロイ方法や運用についての擦り合わせも行った。</li>
+              </ul>
+            </section>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">Webメディア(CMS)のシステムの開発、運用（SESで参画）</h5>
+              <p class="text-sm text-gray-600">2020年10月 〜 2020年12月</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>メンバーとして活動。機能追加やコードレビューを実施し、システムの機能の追加によるユーザー満足度の向上やコードの品質向上に貢献した。</li>
+              </ul>
+            </section>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">社内活動</h5>
+              <p class="text-sm text-gray-600">2020年1月 〜 2020年6月</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>社内業務の効率化のためのツールの開発、技術検証、教育、または自主学習。案件の参画ができなかった自主学習期間において、23冊の書籍を読破。案件参画のための知識獲得を実施した。</li>
+                <li>また、要件を元に社内の勤怠入力の簡略化ツールを開発。勤怠入力の手間を30%削減し、社員の勤怠入力の工数カットに貢献した。</li>
+              </ul>
+            </section>
+          </div>
+        </section>
+
+        <section class="mb-6 p-4 bg-gray-200 border border-gray-300 rounded-lg">
+          <h3 class="text-2xl font-bold text-gray-700">個人事業主</h3>
+          <p class="text-sm text-gray-600">2019年10月 〜 現在</p>
+
+          <div class="ml-4 mt-4">
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">既存の顧客管理システムのcloneアプリの開発</h5>
+              <p class="text-sm text-gray-600">2019年10月 〜 2019年11月</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>既存の顧客管理システムのcloneアプリの開発依頼があり、単独で、開発とインフラ構築を担当した。納品済。</li>
+              </ul>
+            </section>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">プログラミングスクール講師</h5>
+              <p class="text-sm text-gray-600">2020年5月 〜 2021年3月</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>プログラミングスクールの講師として、プログラミングを学びたい社会人の方々にスクールのカリキュラムに応じた指導を実施した。</li>
+              </ul>
+            </section>
+          </div>
+        </section>
+
+        <section class="mb-6 p-4 bg-gray-200 border border-gray-300 rounded-lg">
+          <h3 class="text-2xl font-bold text-gray-700">株式会社ディーエス</h3>
+          <p class="text-sm text-gray-600">2016年4月 〜 2019年9月</p>
+
+          <div class="ml-4 mt-4">
+
+            <h4 class="text-lg font-semibold text-blue-600">プログラマー</h4>
+            <p class="text-sm text-gray-600">2016年4月 〜 2019年9月</p>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">店舗と働き手を繋ぐマッチングアプリの新規開発案件</h5>
+              <p class="text-sm text-gray-600">2019年6月 〜 2019年9月</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>メンバーとして活動。iOSアプリ開発担当として、アプリの開発を実施した。</li>
+              </ul>
+            </section>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">某ソーシャルゲームの運用保守案件</h5>
+              <p class="text-sm text-gray-600">2018年7月 〜 2019年5月</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>メンバーとして活動。新規プラットフォーム展開、機能改修、ガチャやイベントの定期切り替え、ユーザーからの問い合わせ対応などを行い、ゲームの運用に貢献した。</li>
+              </ul>
+            </section>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">日本の某ソーシャルゲームの台湾版をリリースする案件</h5>
+              <p class="text-sm text-gray-600">2017年10月 〜 2018年3月</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>メンバーとして活動。初期リリースが可能な状態までシステムを改修した。</li>
+              </ul>
+            </section>
+
+            <section class="mt-6">
+              <h5 class="text-md font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">ソーシャルゲームの運用保守案件</h5>
+              <p class="text-sm text-gray-600">2016年4月 〜 2017年11月</p>
+              <ul class="list-disc pl-5 leading-snug text-gray-700">
+                <li>メンバーとして活動。新規プラットフォーム展開、機能改修、ガチャやイベントの定期切り替え、ユーザーからの問い合わせ対応などを行い、ゲームの運用に貢献した。</li>
+              </ul>
+            </section>
+          </div>
+        </section>
+
+      </section>
+    </main>
+  </div>
 </body>
 </html>
