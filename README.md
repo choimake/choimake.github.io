@@ -48,3 +48,10 @@ jekyll serve
 
 Reference:
 - [Jekyll を使用して GitHub Pages サイトをローカルでテストする](https://docs.github.com/ja/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll)
+
+### Build tailwindcss
+
+Do this command.
+```
+npx tailwindcss -i ./tailwind.css -o ./assets/css/tailwind.css
+```
