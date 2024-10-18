@@ -53,5 +53,5 @@ Reference:
 
 Do this command.
 ```
-npx tailwindcss -i ./tailwind.css -o ./assets/css/tailwind.css
+npx tailwindcss -i ./tailwind.css -o ./docs/assets/css/tailwind.css
 ```

@@ -1,4 +1,6 @@
-url: "https://choimake.github.io/repository-name"
+url: "https://choimake.github.io"
+
+source: docs
 
 exclude:
   - .sass-cache/
