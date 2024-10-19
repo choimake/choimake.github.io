@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大規模POSシステムのリプレイス案件詳細</title>
+  <link rel="stylesheet" href="../assets/css/tailwind.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" href="../assets/images/favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <div class="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+    <main class="space-y-8">
+      <section class="text-center">
+        <h1 class="text-5xl font-bold text-blue-600 mb-4">大規模POSシステムのリプレイス案件</h1>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4">プロジェクト内容</h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          大規模POSシステムのマイクロサービス化を伴ったリプレイスのための技術支援。 アプリチームのPL（プロジェクトリーダー）の一人として要件定義、設計、実装の支援、その他各種調整などを担当。<br>
+          自社メンバーは最大20名程度で参画。 案件全体の規模感は不明、推定3桁名以上。<br>
+          <br>
+          担当マイクロサービス数4つ（全体数は20以上で正確には不明）<br>
+        </p>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4">技術スタック</h2>
+        <p class="mb-2 text-gray-600">※自分が関わった範囲に限定して記載</p>
+        <ul class="list-disc pl-5 text-lg leading-relaxed text-gray-700">
+          <li>プログラミング言語: Java</li>
+          <li>フレームワーク: Spring Boot</li>
+          <li>データベース: Firestore、Cloud Spanner</li>
+          <li>コンテナ管理・オーケストレーション: Kubernetes（GKE）</li>
+          <li>クラウド: Google Cloud</li>
+          <li>バージョン管理: Git</li>
+          <li>分散トレース: OpenTelemetry</li>
+          <li>メッセージングキュー: Cloud Pub/Sub</li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4">主な業務内容</h2>
+        <ul class="list-disc pl-5 text-lg leading-relaxed text-gray-700">
+          <li>システム設計支援、設計レビュー</li>
+          <li>アプリケーションのアーキテクチャに関する設計支援</li>
+          <li>技術調査、検証</li>
+          <li>お客様とのコミュニケーションパスの調整</li>
+          <li>プロジェクトレベルでの情報整理とプランニング</li>
+          <li>タスク管理</li>
+          <li>オンボーディングの作成と運用</li>
+          <li>メンバーに対するフィードバック</li>
+          <li>アプリケーションの実装</li>
+        </ul>
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">システム設計支援、設計レビュー</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            Google Cloudを使ったマイクロサービスの設計支援。<br>
+            <br>
+            システム設計図を確認し、システムの機能要件、非機能要件を満たすか、何かリスクはないか、必要以上に複雑になり過ぎていないか、などの観点でレビューを中心に設計支援を実施。<br>
+            <br>
+            前提として、GKEを使ったシステムであり、基本的な制御はGKEで行うが、自分はこの辺りの詳しい知見がないので、その辺りは詳しい方にお任せしている。<br>
+            <br>
+            実施したレビューと効果は以下の通り<br>
+            <ul class="list-disc pl-5 text-md leading-relaxed text-gray-700">
+              <li>過度な非同期処理によるデータ整合性の制御が複雑化していた問題を、オーケストレーションパターンの導入によって緩和。これにより、マイクロサービス間の連携における異常系フローが簡素化され、設計コストや運用コストが削減された。</li>
+              <li>高トラフィックなリクエスト（10,000RPS相当）を処理するAPIの性能向上を目的に、既存設計に対する改善案の策定と、正常系および異常系フローの整理を実施。これによりメモリ使用量が半減し、レスポンス速度が安定化。システム要件を確実に満たすことができるようになった。</li>
+              <li>マイクロサービス開発におけるデプロイ戦略を踏まえたDBスキーマのマイグレーション方式を提案。原案ではDBスキーマの整合性を確保することが現実的に困難だったが、改善案の提案により、現実的な解決策を提示し、問題を一定解消した。</li>
+              <li>Pub/Subのメッセージ滞留に対する異常系処理方式を提案（デッドレターキューを活用）。メッセージ滞留時の対応策が設計に欠けていたが、この方式を提案することで、その部分の課題を方針レベルで解決できた。</li>
+            </ul>
+          </p>
+        </section>
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">アプリケーションのアーキテクチャに関する設計支援</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            GKE上のPodにデプロイされるアプリケーションは、JavaとSpring Bootで実装することが決まっていた。そのアーキテクチャについて、ある程度計画されており、レビュー依頼が来たため対応することになった。<br>
+            <br>
+            設計を見ると、DDD（ドメイン駆動設計）とMVC（モデル・ビュー・コントローラ）が混在しており、全体の整合性が取れていない部分が目立った。そのため、どの方針に統一するかを検討する必要があった。<br>
+            <br>
+            このアプリケーションは長期的に運用されることが想定されていたため、Clean Architectureのような堅牢性を重視したアーキテクチャの採用も考慮した。しかし、実装を担当するメンバーのスキルセットを踏まえ、シンプルで実装しやすいMVCアーキテクチャに統一することを決定した。<br>
+            <br>
+            テストコードの分割単位については、当初あまり計画が立てられていない状態だったため、適切と思われる分割単位を提案し、無事採用された。<br>
+          </p>
+        </section>
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">技術調査、検証</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            基本的には、現場のメンバーが困りそうなことを事前に対処したり、詰まっている部分に手を貸すことが多い。特に、プロジェクトの進捗においてボトルネックになりそうな箇所に重点的に取り組んでおり、それらを解決することで進捗に大きなプラス効果をもたらしている。<br>
+            <br>
+            実施した内容は以下の通り<br>
+            <ul class="list-disc pl-5 text-md leading-relaxed text-gray-700">
+              <li>Spring Bootにおける、RequestのValidationの実装方法 & テストの実装方法</li>
+              <li>複数の外部APIを並行処理で叩く処理の実装</li>
+              <li>spring-data-jpa + Spannerにおいて、saveメソッドをupsertからinsertにする処理の実装</li>
+              <li>Spanner EmulatorをSpring Bootと連携する方法</li>
+              <li>Spannerにおける、ナチュラルキーをPrimary Keyに使用した時の、ホットスポットの回避方法</li>
+              <li>Spannerにおける、timestampのBETWEEN検索における、ホットスポットの回避方法</li>
+              <li>Pub/Subにおける、デッドレターキューの挙動やメッセージ内容の調査</li>
+            </ul>
+          </p>
+        </section>
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">お客様とのコミュニケーションパスの調整</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            最初はお客様とテキストベースで仕様に関するQAを行っていたが、情報が錯綜しており、テキストではQAは不可能という状態になった。<br>
+            <br>
+            状況を見ている限り、このままだとQAが全く進まない状態になってしまうと判断したため、追加での定期MTGを計画し、実際に一定の期間MTGを実施した。これによりQAの建て付けの見直し、情報交換の円滑さなどに一定貢献した。<br>
+          </p>
+        </section>
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">プロジェクトレベルでの情報整理とプランニング</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            MTGなどでキャッチした、プロジェクトの情報をメンバーに必要な分だけわかりやすく伝えるよう、必要に応じて情報整理をしたり展開したりをしている。<br>
+            <br>
+            また情報を踏まえた上で、どのように動くかの計画を立てることも実施している。大体2週間単位の計画だが、状況がいきなり変わることもあるので、必要に応じて単位は調整している。<br>
+            <br>
+            特定の手法を固定で使っているわけではなく、情報の箇条書きや図を都度状況に合わせて作成し、都度都度必要に応じて展開している。<br>
+          </p>
+        </section>
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">タスク管理</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            未確定な情報が多い中で、何かしらの成果物を作る必要があり、曖昧な情報に対して「今の段階では一旦こういう仕様で作る」というものを都度できる範囲で設定した上で、お客様の要望をタスクとして切り出し、メンバーに展開している。<br>
+            <br>
+            お客様の設計書のみでタスクを進めようとすると、混乱してタスクが滞ることが一定の頻度で発生するため、タスクが円滑に進むように自分の方である程度の調整を行っている。<br>
+            <br>
+            また、タスクの進捗管理なども行っている。<br>
+          </p>
+        </section>
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">オンボーディングの作成と運用</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            メンバー入れ替えが定期的に発生しており、新規参画メンバーの参画負荷を下げるためのオンボーディング用の情報連携と、オンボーディング用のアプリ開発課題を作成し、展開。<br>
+            <br>
+            これにより、実際の開発に入る際の混乱を減らしており、内部QAのコストを軽減させることに成功した。
+          </p>
+        </section>
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">メンバーに対するフィードバック</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            全員ではないが、必要に応じてフィードバックを実施している。基本的なことがまだできていないメンバーがいる場合は、ポジティブフィードバックの後、ネガティブフィードバックと改善方法案を渡すなどをしている。<br>
+            <br>
+            半年に一度のペースで、メンバー全員分のフィードバックを記載し、全員に渡している。この取り組みの評判はメンバーとPMから好評だった。<br>
+            <br>
+            特にネガティブフィードバックがない場合は「ありがとうございます。おかげで助かってます」というコメントを適宜している。<br>
+          </p>
+        </section>
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">アプリケーションの実装</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            基本的に手を動かすポジションではないが、タスク量に対して人手が足りていないため、一部のアプリケーションの実装に関わっている。<br>
+            <br>
+            実施した内容は以下の通り<br>
+            <ul class="list-disc pl-5 text-md leading-relaxed text-gray-700">
+              <li>いくつかの既存のAPIの機能改修やリファクタリング対応</li>
+              <li>Pub/Subから受け取ったメッセージを元に、他APIを複数実行し、その結果を元にデータを作成し、Pub/SubにPublishするアプリケーションの新規実装</li>
+            </ul>
+          </p>
+        </section>
+      </section>
+      <div class="text-center">
+        <a href="../index.html" class="text-blue-600 font-semibold underline hover:text-blue-800">職務経歴書に戻る</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
