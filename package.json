@@ -1,5 +1,6 @@
 {
   "devDependencies": {
-    "tailwindcss": "^3.4.14"
+    "tailwindcss": "^3.4.14",
+    "w3c-html-validator": "^1.8.2"
   }
 }
