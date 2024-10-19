@@ -60,13 +60,13 @@
             前提として、GKEを使ったシステムであり、基本的な制御はGKEで行うが、自分はこの辺りの詳しい知見がないので、その辺りは詳しい方にお任せしている。<br>
             <br>
             実施したレビューと効果は以下の通り<br>
-            <ul class="list-disc pl-5 text-md leading-relaxed text-gray-700">
-              <li>過度な非同期処理によるデータ整合性の制御が複雑化していた問題を、オーケストレーションパターンの導入によって緩和。これにより、マイクロサービス間の連携における異常系フローが簡素化され、設計コストや運用コストが削減された。</li>
-              <li>高トラフィックなリクエスト（10,000RPS相当）を処理するAPIの性能向上を目的に、既存設計に対する改善案の策定と、正常系および異常系フローの整理を実施。これによりメモリ使用量が半減し、レスポンス速度が安定化。システム要件を確実に満たすことができるようになった。</li>
-              <li>マイクロサービス開発におけるデプロイ戦略を踏まえたDBスキーマのマイグレーション方式を提案。原案ではDBスキーマの整合性を確保することが現実的に困難だったが、改善案の提案により、現実的な解決策を提示し、問題を一定解消した。</li>
-              <li>Pub/Subのメッセージ滞留に対する異常系処理方式を提案（デッドレターキューを活用）。メッセージ滞留時の対応策が設計に欠けていたが、この方式を提案することで、その部分の課題を方針レベルで解決できた。</li>
-            </ul>
           </p>
+          <ul class="list-disc pl-5 text-md leading-relaxed text-gray-700">
+            <li>過度な非同期処理によるデータ整合性の制御が複雑化していた問題を、オーケストレーションパターンの導入によって緩和。これにより、マイクロサービス間の連携における異常系フローが簡素化され、設計コストや運用コストが削減された。</li>
+            <li>高トラフィックなリクエスト（10,000RPS相当）を処理するAPIの性能向上を目的に、既存設計に対する改善案の策定と、正常系および異常系フローの整理を実施。これによりメモリ使用量が半減し、レスポンス速度が安定化。システム要件を確実に満たすことができるようになった。</li>
+            <li>マイクロサービス開発におけるデプロイ戦略を踏まえたDBスキーマのマイグレーション方式を提案。原案ではDBスキーマの整合性を確保することが現実的に困難だったが、改善案の提案により、現実的な解決策を提示し、問題を一定解消した。</li>
+            <li>Pub/Subのメッセージ滞留に対する異常系処理方式を提案（デッドレターキューを活用）。メッセージ滞留時の対応策が設計に欠けていたが、この方式を提案することで、その部分の課題を方針レベルで解決できた。</li>
+          </ul>
         </section>
         <section class="mt-10">
           <h3 class="text-2xl font-semibold text-gray-800 mb-2">アプリケーションのアーキテクチャに関する設計支援</h3>
@@ -86,16 +86,16 @@
             基本的には、現場のメンバーが困りそうなことを事前に対処したり、詰まっている部分に手を貸すことが多い。特に、プロジェクトの進捗においてボトルネックになりそうな箇所に重点的に取り組んでおり、それらを解決することで進捗に大きなプラス効果をもたらしている。<br>
             <br>
             実施した内容は以下の通り<br>
-            <ul class="list-disc pl-5 text-md leading-relaxed text-gray-700">
-              <li>Spring Bootにおける、RequestのValidationの実装方法 & テストの実装方法</li>
-              <li>複数の外部APIを並行処理で叩く処理の実装</li>
-              <li>spring-data-jpa + Spannerにおいて、saveメソッドをupsertからinsertにする処理の実装</li>
-              <li>Spanner EmulatorをSpring Bootと連携する方法</li>
-              <li>Spannerにおける、ナチュラルキーをPrimary Keyに使用した時の、ホットスポットの回避方法</li>
-              <li>Spannerにおける、timestampのBETWEEN検索における、ホットスポットの回避方法</li>
-              <li>Pub/Subにおける、デッドレターキューの挙動やメッセージ内容の調査</li>
-            </ul>
           </p>
+          <ul class="list-disc pl-5 text-md leading-relaxed text-gray-700">
+            <li>Spring Bootにおける、RequestのValidationの実装方法 & テストの実装方法</li>
+            <li>複数の外部APIを並行処理で叩く処理の実装</li>
+            <li>spring-data-jpa + Spannerにおいて、saveメソッドをupsertからinsertにする処理の実装</li>
+            <li>Spanner EmulatorをSpring Bootと連携する方法</li>
+            <li>Spannerにおける、ナチュラルキーをPrimary Keyに使用した時の、ホットスポットの回避方法</li>
+            <li>Spannerにおける、timestampのBETWEEN検索における、ホットスポットの回避方法</li>
+            <li>Pub/Subにおける、デッドレターキューの挙動やメッセージ内容の調査</li>
+          </ul>
         </section>
         <section class="mt-10">
           <h3 class="text-2xl font-semibold text-gray-800 mb-2">お客様とのコミュニケーションパスの調整</h3>
@@ -149,11 +149,11 @@
             基本的に手を動かすポジションではないが、タスク量に対して人手が足りていないため、一部のアプリケーションの実装に関わっている。<br>
             <br>
             実施した内容は以下の通り<br>
-            <ul class="list-disc pl-5 text-md leading-relaxed text-gray-700">
-              <li>いくつかの既存のAPIの機能改修やリファクタリング対応</li>
-              <li>Pub/Subから受け取ったメッセージを元に、他APIを複数実行し、その結果を元にデータを作成し、Pub/SubにPublishするアプリケーションの新規実装</li>
-            </ul>
           </p>
+          <ul class="list-disc pl-5 text-md leading-relaxed text-gray-700">
+            <li>いくつかの既存のAPIの機能改修やリファクタリング対応</li>
+            <li>Pub/Subから受け取ったメッセージを元に、他APIを複数実行し、その結果を元にデータを作成し、Pub/SubにPublishするアプリケーションの新規実装</li>
+          </ul>
         </section>
       </section>
       <div class="text-center">
