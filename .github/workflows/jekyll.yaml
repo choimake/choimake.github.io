@@ -1,4 +1,4 @@
-name: Githab Pages Site CI
+name: jekyll
 
 on:
   pull_request:
