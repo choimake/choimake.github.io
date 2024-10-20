@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>論文・特許データのデータマイニングシステムの開発</title>
+  <link rel="stylesheet" href="../assets/css/tailwind.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" href="../assets/images/favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <div class="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+    <main class="space-y-8">
+      <section class="text-center">
+        <h1 class="text-5xl font-bold text-blue-600 mb-4">論文・特許データのデータマイニングシステムの開発</h1>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4">プロジェクト内容</h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          特定の論文や特許データの内容を分析するためのデータマイニングシステムの開発。<br>
+          <br>
+          やりたいこと主な部分はデータ分析なので、その機能さえあれば要件は満たすが、一般のユーザーにも使いやすいようWebシステムとして作ることになった。
+          <br>
+          Webシステムとして動かすため、バックエンド領域ではREST APIを20本程度作ることになった。この領域を3人で対応し、自分はその中のメンバーの1人。
+        </p>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4">技術スタック</h2>
+        <p class="mb-2 text-gray-600">※自分が関わった範囲に限定して記載</p>
+        <ul class="list-disc pl-5 text-lg leading-relaxed text-gray-700">
+          <li>プログラミング言語: Java</li>
+          <li>フレームワーク: Spring Boot</li>
+          <li>データベース: Firestore、BigQuery</li>
+          <li>コンテナ管理・オーケストレーション: Kubernetes（GKE）</li>
+          <li>クラウド: Google Cloud</li>
+          <li>バージョン管理: Git</li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4">主な業務内容</h2>
+        <ul class="list-disc pl-5 text-lg leading-relaxed text-gray-700">
+          <li>データ分析の際に使用する定義ファイルのフォーマット設計</li>
+          <li>Firestoreのスキーマ設計</li>
+          <li>バックエンド領域のシステム設計レビュー</li>
+          <li>APIの実装とコードレビュー</li>
+          <li>手動でのシステムテスト実施</li>
+        </ul>
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">データ分析の際に使用する定義ファイルのフォーマット設計</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            本システムで扱う論文・特許データはxmlで構成されており、分析にあたり各種タグをどう扱うかの定義が必要だった。<br>
+            <br>
+            タグの定義自体は別チームが用意したので、それをシステムに反映するためのフォーマットを設計した。<br>
+            <br>
+            諸々の制約からtsvをベースにしたが、tsvでは扱いにくい部分もあり、そこは反省点。<br>
+          </p>
+        </section>
+
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">Firestoreのスキーマ設計</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            バックエンドで使うデータベースがFirestoreに変更されたため、スキーマ設計を行った。<br>
+            <br>
+            Firestoreのスキーマ設計では、ホットスポットの回避が重要。分散処理が可能なIDを設定する必要がある。しかし、システム要件として「IDはAuto Incrementにする」という条件があり、分散IDとAuto Incrementという相反する要素を組み合わせる必要があった。<br>
+            <br>
+            解決策として、「IDのAuto Incrementを管理する専用のDocumentを作成し、アプリケーションで使用するDocumentには分散用IDとAuto Increment用IDの2つを持たせる方法」を採用して、要件を満たした。<br>
+            <br>
+            詳細は、<a href="https://zenn.dev/choimake/articles/6c1cf692278b26" target="_blank" class="text-blue-600 font-semibold underline hover:text-blue-800">Firestoreで連番IDを実装する方法</a>を参照。<br>
+          </p>
+        </section>
+
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">バックエンド領域のシステム設計レビュー</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            チームで設計領域を分担し、設計は各自で行い、それをメンバー全員でレビューして成果物を仕上げるという方法を取った。<br>
+            <br>
+            バックエンド領域では、DataflowやFirestoreなどクラウドリソースの実行状態の整合性を保ちながら処理を行う点（分散トランザクションの類）が難しく、異常系のパターン列挙とその解消パターンの設計が特に困難だった。<br>
+            <br>
+            設計フェーズは1ヶ月半あったが、この部分だけで2週間以上を費やした。<br>
+            <br>
+            「異常が発生した場合、処理の状態を戻さずに終了し、後でバッチ処理で異常を救う」という方針に至り、複雑さを抑えて設計を完了させた。<br>
+          </p>
+        </section>
+
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">APIの実装とコードレビュー</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            Clean ArchitectureをベースにREST APIを実装。ここでも各自でAPIを実装し、メンバー全員でレビューする体制で進めた。<br>
+            <br>
+            当初の予定に対して、設計と実装フェーズで時間を多く使ってしまったが（元々の見積もりよりアプリの実装量が多かった）、品質を優先してしっかりレビューを行った。<br>
+            <br>
+            結果として、後のテスト工程でバックエンド領域の不具合は1件（軽微なもの）しか発生せず、高品質なAPIを作ることに成功。バックエンド領域でテスト工程の追加はほぼなかった。<br>
+          </p>
+        </section>
+
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">手動でのシステムテスト実施</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            ユニットテストではカバーできない部分を手動でテスト。テストシナリオに沿ってシステムを操作し、エビデンスとしてスクリーンショットを撮る方法を採用した。<br>
+            <br>
+            重要な工程ではあるが、全くモチベーションが上がらず、自分はこの手の作業が好きではないと再確認した。<br>
+          </p>
+        </section>
+      </section>
+      <div class="text-center">
+        <a href="../index.html" class="text-blue-600 font-semibold underline hover:text-blue-800">職務経歴書に戻る</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
