@@ -1,3 +1,7 @@
+# direnv
+.envrc
+
+# Jekyll
 _site
 .sass-cache
 .jekyll-cache
