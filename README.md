@@ -1,14 +1,31 @@
-# cv-template
+# choimake.github.io
+公開用の職務経歴書
 
 ## How to use
-### Install Jekyll
-
-First, install Homebrew.
+### Install Homebrew
+install Homebrew.
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
+### Install Modules
+Do this command
+```
+brew install node
+```
 
-Next, install chruby and ruby-install.
+Next, install node_modules
+```
+npm install
+```
+### Build tailwindcss
+
+Do this command.
+```
+npx tailwindcss -i ./tailwind.css -o ./docs/assets/css/tailwind.css
+```
+### Install Jekyll
+
+First, install chruby and ruby-install.
 ```
 brew install chruby ruby-install
 ```
@@ -49,9 +66,3 @@ jekyll serve
 Reference:
 - [Jekyll を使用して GitHub Pages サイトをローカルでテストする](https://docs.github.com/ja/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll)
 
-### Build tailwindcss
-
-Do this command.
-```
-npx tailwindcss -i ./tailwind.css -o ./docs/assets/css/tailwind.css
-```
