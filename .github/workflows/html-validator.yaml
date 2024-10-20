@@ -12,10 +12,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      # Note:
+      # html-validatorをbuild済のhtmlに対して実行するために、以下の手順で対応
+      # 1. JekyllでWebページ用のhtmlをbuildする
+      # 2. 1で生成したhtmlに対してvalidateを実行する
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3.5'
+      - name: Install Jekyll and dependencies
+        run: gem install jekyll
+      - name: Build Jekyll site
+        run: jekyll build
       - uses: actions/setup-node@v4
         with:
           node-version-file: 'package.json'
       - run: npm install
-      # Run w3c-html-validator on the docs
-      - run: npx html-validator docs
+      # Run w3c-html-validator
+      - run: npx html-validator _site
 
