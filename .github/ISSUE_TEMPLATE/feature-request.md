@@ -1,6 +1,6 @@
 ---
 name: Feature Request
-about: Submit the feature request for the project. 
+about: Submit a feature request for the project. 
 title: "[Feature] Please input title"
 labels: enhancement
 assignees: ''
