@@ -56,6 +56,7 @@
           <li>オンボーディングの作成と運用</li>
           <li>メンバーに対するフィードバック</li>
           <li>アプリケーションの実装</li>
+          <li>障害対応</li>
         </ul>
         <section class="mt-10">
           <h3 class="text-2xl font-semibold text-gray-800 mb-2">システム設計支援、設計レビュー</h3>
@@ -143,12 +144,20 @@
         <section class="mt-10">
           <h3 class="text-2xl font-semibold text-gray-800 mb-2">メンバーに対するフィードバック</h3>
           <p class="text-lg text-gray-700 leading-relaxed">
-            全員ではないが、必要に応じてフィードバックを実施している。基本的なことがまだできていないメンバーがいる場合は、ポジティブフィードバックの後、ネガティブフィードバックと改善方法案を渡すなどをしている。<br>
+            メンバーのケイパビリティ向上と関係性強化のため、半年に一度のペースで、メンバー全員分のフィードバックを記載し、1on1形式で全員に渡している。<br>
+            ※この取り組みは自主的な取り組み。現環境ではフィードバックの量、質ともに不足しているのではないかという課題を感じて始めたものである。<br>
             <br>
-            半年に一度のペースで、メンバー全員分のフィードバックを記載し、全員に渡している。この取り組みの評判はメンバーとPMから好評だった。<br>
+            効果は不明だが、メンバーとPMから好評な様子なので、今後も継続予定（2024年12月時点で2回目）。<br>
             <br>
-            特にネガティブフィードバックがない場合は「ありがとうございます。おかげで助かってます」というコメントを適宜している。<br>
+            内容としては、以下の通り<br>
           </p>
+          <ul class="list-disc pl-5 text-md leading-relaxed text-gray-700">
+            <li>ポジティブフィードバック</li>
+            <li>ネガティブフィードバック</li>
+            <li>改善方法提案</li>
+            <li>課題ヒアリング</li>
+            <li>感謝</li>
+          </ul>
         </section>
         <section class="mt-10">
           <h3 class="text-2xl font-semibold text-gray-800 mb-2">アプリケーションの実装</h3>
@@ -162,6 +171,13 @@
             <li>Pub/Subから受け取ったメッセージを元に、他APIを複数実行し、その結果を元にデータを作成し、Pub/SubにPublishするアプリケーションの新規実装</li>
           </ul>
         </section>
+      </section>
+      <section class="mt-10">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-2">障害対応</h3>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          アプリケーションを実際に動かした際に不具合が出た場合の障害対応。<br>
+          原因調査、修正方針の策定やお客様との調整、修正の実施（一部）、レビュー、各処への連絡などを行なっている。<br>
+        </p>
       </section>
       <div class="text-center">
         <a href="{{ site.url }}/index.html" class="text-blue-600 font-semibold underline hover:text-blue-800">職務経歴書に戻る</a>

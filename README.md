@@ -66,3 +66,14 @@ jekyll serve
 Reference:
 - [Jekyll を使用して GitHub Pages サイトをローカルでテストする](https://docs.github.com/ja/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll)
 
+
+## How to Development
+
+First, do jekyll serve
+
+Second, edit code
+
+Third, do html validator like this.
+```
+npx html-validator _site
+```
