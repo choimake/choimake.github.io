@@ -24,7 +24,7 @@ jobs:
         run: gem install jekyll
       - name: Build Jekyll site
         run: jekyll build
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version: '22'
       - run: npm install
