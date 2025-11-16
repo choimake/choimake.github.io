@@ -21,7 +21,7 @@ npm install
 
 Do this command.
 ```
-npx tailwindcss -i ./tailwind.css -o ./docs/assets/css/tailwind.css
+npx @tailwindcss/cli -i ./tailwind.css -o ./docs/assets/css/tailwind.css
 ```
 ### Install Jekyll
 
