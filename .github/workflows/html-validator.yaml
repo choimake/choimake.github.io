@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       # Note:
       # html-validatorをbuild済のhtmlに対して実行するために、以下の手順で対応
       # 1. JekyllでWebページ用のhtmlをbuildする
