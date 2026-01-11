@@ -1,0 +1,2 @@
+# 白紙のIssue作成を無効化し、ユーザーにテンプレート（Bug Report / Feature Request）の利用を促します。
+blank_issues_enabled: false
