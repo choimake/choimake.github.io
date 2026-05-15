@@ -1,0 +1,20 @@
+[tools]
+node = "lts"
+ruby = "3.4.9"
+
+[settings]
+ruby.compile = false
+
+[tasks.css]
+description = "Build Tailwind CSS"
+run = "npx @tailwindcss/cli -i ./tailwind.css -o ./docs/assets/css/tailwind.css"
+
+[tasks.serve]
+description = "Serve the Jekyll site locally"
+depends = ["css"]
+run = "bundle exec jekyll serve"
+
+[tasks.validate]
+description = "Build and validate generated HTML"
+depends = ["css"]
+run = "bundle exec jekyll build && npx html-validator _site"

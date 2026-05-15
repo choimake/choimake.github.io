@@ -1,0 +1,116 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GENIEE CDPの新機能開発支援および運用・信頼性改善</title>
+  <meta property="og:title" content="GENIEE CDPの新機能開発支援および運用・信頼性改善">
+  <meta property="og:description" content="GENIEE CDPの新機能開発支援および運用・信頼性改善の詳細情報です">
+  <meta property="og:image" content="{{ site.url }}/assets/images/ogp.png">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/tailwind.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="icon" href="{{ site.url }}/assets/images/favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <div class="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+    <main class="space-y-8">
+      <section class="text-center">
+        <h1 class="text-5xl font-bold text-blue-600 mb-4">GENIEE CDPの新機能開発支援および運用・信頼性改善</h1>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4">プロジェクト内容</h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          GENIEE CDPにおいて、新機能開発の推進支援と、既存機能の運用・信頼性・セキュリティ改善を担当。<br>
+          <br>
+          新機能開発では、要件が固まりきっていない段階から業務フロー、技術課題、受入基準、検証観点を整理し、PO・実装担当・インフラ担当の認識合わせを推進。実装担当者が着手しやすいPBIへ分解することで、開発初期の手戻りリスクを下げ、関係者が同じ前提で進められる状態を作った。<br>
+          <br>
+          既存機能領域では、SLI/SLOの導入、予算アラートの導入、セキュリティリスク調査、リリース運用上の課題整理を行い、継続的に改善しやすい状態づくりを進めた。
+        </p>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4">技術スタック</h2>
+        <p class="mb-2 text-gray-600">※自分が関わった範囲に限定して記載</p>
+        <ul class="list-disc pl-5 text-lg leading-relaxed text-gray-700">
+          <li>クラウド: Google Cloud、AWS</li>
+          <li>インフラ・運用: Cloud Run、Compute Engine、Load Balancing、Terraform、GitHub Actions</li>
+          <li>データ基盤: BigQuery</li>
+          <li>監視・信頼性: Cloud Monitoring、SLI/SLO</li>
+          <li>バージョン管理: Git</li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4">主な業務内容</h2>
+        <ul class="list-disc pl-5 text-lg leading-relaxed text-gray-700">
+          <li>新機能開発における要件整理、業務フロー整理、受入基準設計、PBI作成</li>
+          <li>PO・実装担当・インフラ担当との認識合わせ、論点整理、レビュー観点の整理</li>
+          <li>特定サービスにおけるSLI/SLO仕様の作成、監視方式の設計、導入後の運用整理</li>
+          <li>クラウド利用料の予算アラート導入によるコスト監視の仕組み化</li>
+          <li>CVE影響調査、APIキー権限設定の見直し、脆弱性診断に向けた前提整理</li>
+          <li>構造的な技術課題に対する改善方針の提案、技術レビュー、進め方の整理</li>
+          <li>リリース時の通信断リスクやリリース判定プロセスに関する課題整理</li>
+        </ul>
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">新機能開発におけるPBI設計と合意形成</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            新機能開発では、要求や業務フローが十分に固まっていない段階から、実装に進むために必要な論点を整理した。<br>
+            <br>
+            業務として成立する流れ、技術的に決めるべき事項、検証観点、完了条件を明確化し、実装担当者が着手しやすい粒度のPBIへ分解。PO・実装担当・インフラ担当が同じ前提で動ける状態を作り、開発初期の手戻りリスクを下げた。
+          </p>
+        </section>
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">SLI/SLOの導入と運用</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            特定サービスに対して、SLI/SLOを新たに導入した。<br>
+            <br>
+            初期段階では具体的な要件が少なかったため、サービスの利用実態や障害時の影響を踏まえ、何を信頼性指標として扱うべきかを整理。コストと運用負荷を抑えながら継続確認できる方式を検討し、Cloud Monitoring SLOを用いた監視基盤の設計・導入・運用整理を行った。<br>
+            <br>
+            これにより、サービスの健全性を判断する基準と、運用時に確認すべき指標を明確化した。
+          </p>
+        </section>
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">予算アラートの導入</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            クラウド利用料の予期しない増加を早期に検知できるよう、予算アラートを導入した。<br>
+            <br>
+            コストの割当先、通知先、閾値を整理し、運用担当者が費用増加に気づける状態を作ることで、クラウド利用におけるコスト管理と運用リスク低減に貢献した。
+          </p>
+        </section>
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">セキュリティリスクの調査と対応方針整理</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            Linuxカーネル由来のCVEについて、各サービスへの影響範囲を調査し、対応要否・優先度・後続タスクを整理した。<br>
+            <br>
+            また、Google Cloud上のAPIキー権限設定に関する警告について、対象候補の調査とリスク低減方針の整理を実施。脆弱性診断に向けて、対象範囲や必要情報の整理も行い、対応を進めるための前提づくりに貢献した。
+          </p>
+        </section>
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">技術レビューとアーキテクチャ改善支援</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            Google Cloud と AWS にまたがる複数サービスの連携機能について、クラウド基盤が分かれている一方で、AWS側のデータストアへの依存がサービス間の結合点になっている構造的な課題を整理した。<br>
+            <br>
+            中長期的な再発抑止には、共有データストアを前提にした連携から、サービスごとの責務境界をより明確にした構成へ見直す必要があると判断し、リアーキテクチャ方針を提案。実装は別担当者が担い、自身は設計レビュー、進め方の整理、関係者との相談、実装方針へのアドバイスを通じて、中長期的な改善に向けた推進を支援した。<br>
+            <br>
+            また、リリース時の通信断リスクなど、運用上のリスクを含む技術課題についてもレビューを行い、技術的な妥当性と進め方の両面から改善方針の具体化を支援した。
+          </p>
+        </section>
+        <section class="mt-10">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">リリース運用と信頼性改善の課題整理</h3>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            リリース時のインスタンス置換や進行中リクエストの切断リスクについて、インフラ構成とリリース手順の観点から課題を整理した。<br>
+            <br>
+            あわせて、リリース可能な時間帯の判断手順、リリース判定プロセス、関連機能のリリース計画を見直し、リリース作業の再現性と安全性を高めるためのタスク設計を行った。
+          </p>
+        </section>
+      </section>
+      <div class="text-center">
+        <a href="{{ site.url }}/index.html" class="text-blue-600 font-semibold underline hover:text-blue-800">職務経歴書に戻る</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
