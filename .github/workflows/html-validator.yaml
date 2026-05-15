@@ -20,14 +20,13 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '4.0.2'
-      - name: Install Jekyll and dependencies
-        run: gem install jekyll
+          bundler-cache: true
       - name: Build Jekyll site
-        run: jekyll build
+        run: bundle exec jekyll build
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-      - run: npm install
+      - run: npm ci
       # Run w3c-html-validator
       - run: npx html-validator _site
 

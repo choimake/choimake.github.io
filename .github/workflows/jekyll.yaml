@@ -23,9 +23,8 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '4.0.2'
-      - name: Install Jekyll and dependencies
-        run: gem install jekyll
+          bundler-cache: true
       - name: Build Jekyll site
-        run: jekyll build
+        run: bundle exec jekyll build
       - name: Test Jekyll site
-        run: jekyll doctor
+        run: bundle exec jekyll doctor
