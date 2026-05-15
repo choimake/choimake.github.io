@@ -1,7 +1,7 @@
 {
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.7",
-    "tailwindcss": "^4.1.7",
+    "@tailwindcss/cli": "^4.3.0",
+    "tailwindcss": "^4.3.0",
     "w3c-html-validator": "^2.0.0"
   }
 }
