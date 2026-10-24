@@ -20,7 +20,7 @@ Build Tailwind CSS and serve the site, then access `http://127.0.0.1:4000`
 mise run serve
 ```
 
-To build only Tailwind CSS:
+`docs/assets/css/tailwind.css` is generated and not committed. To build only Tailwind CSS:
 ```
 mise run css
 ```
