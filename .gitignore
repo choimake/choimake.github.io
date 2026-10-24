@@ -1,6 +1,9 @@
 # direnv
 .envrc
 
+# mise
+mise.local.toml
+
 # Jekyll
 _site
 .sass-cache
