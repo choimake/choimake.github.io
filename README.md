@@ -65,7 +65,14 @@ It checks:
 - Tools in `mise.toml`. Node.js is compared with the latest LTS
 - Libraries loaded from cdnjs in `docs/`
 
+It also closes its own issues for dependencies that are no longer candidates.
+
 To list the candidates locally without creating issues:
 ```
 mise run deps:propose
+```
+
+To run the tests for the scripts:
+```
+mise run test
 ```

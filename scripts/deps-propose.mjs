@@ -213,6 +213,17 @@ export function planIssueWrites(candidates, issues) {
       issue: next,
     });
   }
+  // 候補から外れた依存の Issue は、上げ終わったか上げる必要が無くなったので閉じる。
+  const wanted = new Set(candidates.map((candidate) => markerFor(candidate.ecosystem, candidate.name)));
+  for (const issue of issues) {
+    if (issue.pull_request) {
+      continue;
+    }
+    const marker = String(issue.body ?? "").match(new RegExp(`<!-- ${MARKER_PREFIX}:.+? -->`));
+    if (marker && !wanted.has(marker[0])) {
+      writes.push({ action: "close", number: issue.number, title: issue.title });
+    }
+  }
   return writes;
 }
 
@@ -422,8 +433,31 @@ export async function listOpenIssues({ owner, repo, token, fetchImpl = fetch }) 
 export async function applyWrites({ owner, repo, token, writes, fetchImpl = fetch }) {
   const created = [];
   const updated = [];
+  const closed = [];
   for (const write of writes) {
     if (write.action === "skip") {
+      continue;
+    }
+    if (write.action === "close") {
+      const issueUrl = `https://api.github.com/repos/${owner}/${repo}/issues/${write.number}`;
+      const headers = { ...githubHeaders(token), "Content-Type": "application/json" };
+      const comment = await fetchImpl(`${issueUrl}/comments`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ body: "週次の依存確認で更新候補から外れたので閉じる。" }),
+      });
+      if (!comment.ok) {
+        throw new Error(`Issue #${write.number} にコメントできない。status=${comment.status}`);
+      }
+      const response = await fetchImpl(issueUrl, {
+        method: "PATCH",
+        headers,
+        body: JSON.stringify({ state: "closed", state_reason: "completed" }),
+      });
+      if (!response.ok) {
+        throw new Error(`Issue #${write.number} を閉じられない。status=${response.status}`);
+      }
+      closed.push(write.number);
       continue;
     }
     if (write.action === "create") {
@@ -462,7 +496,7 @@ export async function applyWrites({ owner, repo, token, writes, fetchImpl = fetc
     }
     updated.push(write.number);
   }
-  return { created, updated };
+  return { created, updated, closed };
 }
 
 export async function collectCandidates({
@@ -485,6 +519,10 @@ function printWrites(writes) {
     return;
   }
   for (const write of writes) {
+    if (write.action === "close") {
+      console.log(`close\t#${write.number}\t${write.title}`);
+      continue;
+    }
     const target = `${write.candidate.ecosystem} ${write.candidate.name} ${write.candidate.from} -> ${write.candidate.to}`;
     if (write.action === "create") {
       console.log(`create\t${target}`);
@@ -520,7 +558,7 @@ export async function main(argv = process.argv.slice(2), env = process.env) {
   const writes = planIssueWrites(candidates, issues);
   printWrites(writes);
   const result = await applyWrites({ owner, repo, token, writes });
-  console.log(`created=${result.created.join(",") || "none"} updated=${result.updated.join(",") || "none"}`);
+  console.log(`created=${result.created.join(",") || "none"} updated=${result.updated.join(",") || "none"} closed=${result.closed.join(",") || "none"}`);
 }
 
 const isDirectRun = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
