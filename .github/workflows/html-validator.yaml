@@ -5,6 +5,8 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -12,21 +14,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
-      # Note:
-      # html-validatorをbuild済のhtmlに対して実行するために、以下の手順で対応
-      # 1. JekyllでWebページ用のhtmlをbuildする
-      # 2. 1で生成したhtmlに対してvalidateを実行する
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '4.0.9'
-          bundler-cache: true
-      - name: Build Jekyll site
-        run: bundle exec jekyll build
-      - uses: actions/setup-node@v7
-        with:
-          node-version: '24.22.1'
+      - uses: jdx/mise-action@v5
+      - run: bundle install
       - run: npm ci
-      # Run w3c-html-validator
-      - run: npx html-validator _site
-
+      # Jekyll で生成した HTML を w3c-html-validator で検証する
+      - run: mise run validate

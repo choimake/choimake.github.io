@@ -5,6 +5,8 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -12,11 +14,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '4.0.9'
-          bundler-cache: true
+      - uses: jdx/mise-action@v5
+      - run: bundle install
       - name: Build Jekyll site
         run: bundle exec jekyll build
       - name: Test Jekyll site
