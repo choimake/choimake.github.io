@@ -58,7 +58,7 @@ GitHub Actions runs `deps-propose` every Monday. It leaves outdated dependencies
 It checks:
 - npm packages
 - GitHub Actions
-- Ruby gems, including indirect ones, and Bundler itself
+- Ruby gems, including indirect ones, and Bundler itself. Versions blocked by other gems' requirements are skipped
 - Tools in `mise.toml`. Node.js is compared with the latest LTS
 - Libraries loaded from cdnjs in `docs/`
 

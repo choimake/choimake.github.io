@@ -290,7 +290,10 @@ function runAllowingExit1(command, args) {
   }
 }
 
-export function collectBundleOutdated(run = () => runAllowingExit1("bundle", ["outdated", "--parseable"])) {
+// --strict で、ほかの gem の制約で上げられない版を除く。
+export function collectBundleOutdated(
+  run = () => runAllowingExit1("bundle", ["outdated", "--parseable", "--strict"]),
+) {
   return parseBundleOutdated(run());
 }
 
