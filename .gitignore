@@ -4,6 +4,9 @@
 # mise
 mise.local.toml
 
+# Tailwind CSS (built by `mise run css`)
+docs/assets/css/tailwind.css
+
 # Jekyll
 _site
 .sass-cache
