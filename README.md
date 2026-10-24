@@ -53,7 +53,14 @@ mise run gitleaks:protect
 Settings are in `.gitleaks.toml`. It uses the default rules. Add an allowlist to exclude false positives.
 
 ### Dependency updates
-GitHub Actions runs `deps-propose` every Monday. It leaves outdated npm packages and GitHub Actions as issues. Read the issue, then open a PR if needed. Ruby gems are not covered.
+GitHub Actions runs `deps-propose` every Monday. It leaves outdated dependencies as issues. Read the issue, then open a PR if needed.
+
+It checks:
+- npm packages
+- GitHub Actions
+- Ruby gems, including indirect ones, and Bundler itself
+- Tools in `mise.toml`. Node.js is compared with the latest LTS
+- Libraries loaded from cdnjs in `docs/`
 
 To list the candidates locally without creating issues:
 ```

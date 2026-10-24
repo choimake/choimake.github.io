@@ -84,6 +84,42 @@ export function parseNpmOutdated(raw) {
     .filter((item) => item.from && item.to && item.from !== item.to);
 }
 
+export function parseBundleOutdated(raw) {
+  const found = [];
+  for (const match of String(raw ?? "").matchAll(/^(\S+) \(newest ([^,\s]+)[^,]*, installed ([^,\s)]+)/gm)) {
+    found.push({ ecosystem: "bundler", name: match[1], from: match[3], to: match[2] });
+  }
+  return found;
+}
+
+export function parseBundledWith(lockText) {
+  const match = String(lockText ?? "").match(/^BUNDLED WITH\n\s+(\S+)/m);
+  return match ? match[1] : null;
+}
+
+export function parseMiseOutdated(raw, configPath) {
+  const parsed = typeof raw === "string" ? JSON.parse(raw || "{}") : raw;
+  return Object.values(parsed)
+    .filter((info) => info.source?.path === configPath)
+    .map((info) => ({
+      ecosystem: "mise",
+      name: info.name,
+      from: String(info.current ?? ""),
+      to: String(info.bump ?? info.latest ?? ""),
+    }))
+    .filter((item) => item.from && item.to && item.from !== item.to);
+}
+
+export function parseCdnjsRefs(texts) {
+  const found = new Map();
+  for (const text of texts) {
+    for (const match of String(text).matchAll(/cdnjs\.cloudflare\.com\/ajax\/libs\/([^/]+)\/([^/]+)\//g)) {
+      found.set(`${match[1]}@${match[2]}`, { name: match[1], version: match[2] });
+    }
+  }
+  return [...found.values()];
+}
+
 function versionComment(line) {
   const commented = String(line).match(/#\s*(v\d+(?:\.\d+){0,2})\b/i);
   if (!commented) {
@@ -240,6 +276,82 @@ export function defaultNpmOutdated() {
   }
 }
 
+function runAllowingExit1(command, args) {
+  try {
+    return execFileSync(command, args, {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+  } catch (error) {
+    if (error.status === 1 && typeof error.stdout === "string") {
+      return error.stdout;
+    }
+    throw error;
+  }
+}
+
+export function collectBundleOutdated(run = () => runAllowingExit1("bundle", ["outdated", "--parseable"])) {
+  return parseBundleOutdated(run());
+}
+
+// Node は最新ではなく LTS の最新と比べる。
+export function collectMiseOutdated({
+  configPath = join(process.cwd(), "mise.toml"),
+  runOutdated = () => runAllowingExit1("mise", ["outdated", "--bump", "--json"]),
+  latestNodeLts = () => execFileSync("mise", ["latest", "node@lts"], { encoding: "utf8" }).trim(),
+} = {}) {
+  return parseMiseOutdated(runOutdated(), configPath)
+    .map((item) => (item.name === "node" ? { ...item, to: latestNodeLts() } : item))
+    .filter((item) => compareVersions(item.to, item.from) > 0);
+}
+
+export async function collectBundlerCandidate({
+  lockText = readFileSync(join(process.cwd(), "Gemfile.lock"), "utf8"),
+  fetchLatest = defaultFetchLatestBundler,
+} = {}) {
+  const current = parseBundledWith(lockText);
+  const latest = current ? await fetchLatest() : null;
+  if (!latest || compareVersions(latest, current) <= 0) {
+    return [];
+  }
+  return [{ ecosystem: "bundler", name: "bundler", from: current, to: latest }];
+}
+
+export async function collectCdnjsCandidates(readHtml = defaultReadHtml, fetchLatest = defaultFetchLatestCdnjs) {
+  const candidates = [];
+  for (const ref of parseCdnjsRefs(readHtml())) {
+    const latest = await fetchLatest(ref.name);
+    if (latest && compareVersions(latest, ref.version) > 0) {
+      candidates.push({ ecosystem: "cdnjs", name: ref.name, from: ref.version, to: latest });
+    }
+  }
+  return candidates;
+}
+
+export function defaultReadHtml(dir = join(process.cwd(), "docs")) {
+  return readdirSync(dir, { recursive: true })
+    .filter((name) => name.endsWith(".html"))
+    .map((name) => readFileSync(join(dir, name), "utf8"));
+}
+
+async function fetchJson(url, fetchImpl = fetch) {
+  const response = await fetchImpl(url);
+  if (!response.ok) {
+    throw new Error(`${url} が取れない。status=${response.status}`);
+  }
+  return response.json();
+}
+
+export async function defaultFetchLatestBundler() {
+  const payload = await fetchJson("https://rubygems.org/api/v1/versions/bundler/latest.json");
+  return payload.version ?? null;
+}
+
+export async function defaultFetchLatestCdnjs(name) {
+  const payload = await fetchJson(`https://api.cdnjs.com/libraries/${encodeURIComponent(name)}?fields=version`);
+  return payload.version ?? null;
+}
+
 export function defaultReadWorkflows(workflowsDir = join(process.cwd(), ".github/workflows")) {
   return readdirSync(workflowsDir)
     .filter((name) => name.endsWith(".yml") || name.endsWith(".yaml"))
@@ -357,7 +469,11 @@ export async function collectCandidates({
 } = {}) {
   const npm = collectNpmOutdated(runNpmOutdated);
   const actions = await collectActionCandidates(readWorkflows, fetchLatest);
-  return [...npm, ...actions];
+  const gems = collectBundleOutdated();
+  const bundler = await collectBundlerCandidate();
+  const tools = collectMiseOutdated();
+  const cdnjs = await collectCdnjsCandidates();
+  return [...npm, ...actions, ...gems, ...bundler, ...tools, ...cdnjs];
 }
 
 function printWrites(writes) {

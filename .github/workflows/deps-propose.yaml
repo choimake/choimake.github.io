@@ -16,6 +16,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: jdx/mise-action@v5
       - run: npm ci
+      - run: bundle install
       - name: Leave outdated deps as issues
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -29,5 +29,5 @@ description = "Scan secrets in staged changes"
 run = "gitleaks protect --source . --staged --verbose --redact"
 
 [tasks."deps:propose"]
-description = "List outdated npm packages and GitHub Actions, and leave them as issues with --apply"
+description = "List outdated dependencies, and leave them as issues with --apply"
 run = "node scripts/deps-propose.mjs"
