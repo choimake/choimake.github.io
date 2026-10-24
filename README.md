@@ -39,6 +39,9 @@ Third, build and validate the generated HTML.
 mise run validate
 ```
 
+### Deploy
+Pushing to `main` builds the site with GitHub Actions and deploys it to GitHub Pages (`.github/workflows/pages.yaml`). The build uses the Jekyll version in `Gemfile.lock`.
+
 ### Secret scan
 Scan secrets with gitleaks, including git history. GitHub Actions runs the same task on pull requests and `main`.
 ```
