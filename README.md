@@ -38,3 +38,31 @@ Third, build and validate the generated HTML.
 ```
 mise run validate
 ```
+
+### Secret scan
+Scan secrets with gitleaks, including git history. GitHub Actions runs the same task on pull requests and `main`.
+```
+mise run gitleaks
+```
+
+To scan only staged changes before committing:
+```
+mise run gitleaks:protect
+```
+
+Settings are in `.gitleaks.toml`. It uses the default rules. Add an allowlist to exclude false positives.
+
+### Dependency updates
+GitHub Actions runs `deps-propose` every Monday. It leaves outdated dependencies as issues. Read the issue, then open a PR if needed.
+
+It checks:
+- npm packages
+- GitHub Actions
+- Ruby gems, including indirect ones, and Bundler itself
+- Tools in `mise.toml`. Node.js is compared with the latest LTS
+- Libraries loaded from cdnjs in `docs/`
+
+To list the candidates locally without creating issues:
+```
+mise run deps:propose
+```

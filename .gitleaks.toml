@@ -1,0 +1,7 @@
+# gitleaks の設定。ルールはデフォルトを使う。
+# 誤検知を除外するときは allowlist を足す。
+
+title = "choimake.github.io"
+
+[extend]
+useDefault = true
