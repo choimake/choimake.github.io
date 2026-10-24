@@ -1,6 +1,7 @@
 [tools]
 node = "24.22.1"
 ruby = "4.0.9"
+gitleaks = "8.30.1"
 
 [settings]
 ruby.compile = false
@@ -18,3 +19,15 @@ run = "bundle exec jekyll serve"
 description = "Build and validate generated HTML"
 depends = ["css"]
 run = "bundle exec jekyll build && npx html-validator _site"
+
+[tasks.gitleaks]
+description = "Scan secrets including git history"
+run = "gitleaks detect --source . --verbose --redact"
+
+[tasks."gitleaks:protect"]
+description = "Scan secrets in staged changes"
+run = "gitleaks protect --source . --staged --verbose --redact"
+
+[tasks."deps:propose"]
+description = "List outdated npm packages and GitHub Actions, and leave them as issues with --apply"
+run = "node scripts/deps-propose.mjs"
