@@ -181,7 +181,7 @@ ${candidate.name} の ${candidate.to} が公開されています（現在は ${
 
 ### 備考
 
-週次の依存関係チェックで検出されました。
+毎週月曜のパッケージ更新確認で見つかりました。
 
 ${marker}
 `;
@@ -444,7 +444,7 @@ export async function applyWrites({ owner, repo, token, writes, fetchImpl = fetc
       const comment = await fetchImpl(`${issueUrl}/comments`, {
         method: "POST",
         headers,
-        body: JSON.stringify({ body: "週次の依存関係チェックで更新対象から外れたため、この Issue は閉じます。" }),
+        body: JSON.stringify({ body: "毎週月曜のパッケージ更新確認で更新対象から外れたため、この Issue は閉じます。" }),
       });
       if (!comment.ok) {
         throw new Error(`Issue #${write.number} にコメントできない。status=${comment.status}`);

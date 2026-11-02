@@ -114,7 +114,7 @@ test("Issue の題は完了条件で、本文に重複防止の印がある", ()
   assert.ok(issue.body.includes("tailwindcss の 4.4.0 が公開されています（現在は 4.3.3 を使用中）。"));
   assert.ok(issue.body.includes("変更内容を確認し、問題なければ更新用の PR を作成します。"));
   assert.ok(issue.body.includes("- [ ] tailwindcss が 4.4.0 に更新されている"));
-  assert.ok(issue.body.includes("週次の依存関係チェックで検出されました。"));
+  assert.ok(issue.body.includes("毎週月曜のパッケージ更新確認で見つかりました。"));
   assert.ok(issue.body.includes("<!-- deps-propose:npm:tailwindcss -->"));
 });
 
@@ -188,6 +188,6 @@ test("閉じるときはコメントを残してから closed にする", async 
       ["PATCH", "https://api.github.com/repos/o/r/issues/20"],
     ],
   );
-  assert.equal(calls[0].body.body, "週次の依存関係チェックで更新対象から外れたため、この Issue は閉じます。");
+  assert.equal(calls[0].body.body, "毎週月曜のパッケージ更新確認で更新対象から外れたため、この Issue は閉じます。");
   assert.deepEqual(calls[1].body, { state: "closed", state_reason: "completed" });
 });
