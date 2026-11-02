@@ -167,7 +167,7 @@ export function buildIssue(candidate) {
   const title = `${candidate.name} を ${candidate.from} から ${candidate.to} へ上げる`;
   const body = `### 背景・目的
 
-${candidate.name} の新しい版がある。いまの版は ${candidate.from} である。新しい版は ${candidate.to} である。
+${candidate.name} の新しいバージョンがある。いまのバージョンは ${candidate.from} である。新しいバージョンは ${candidate.to} である。
 人は、この Issue を見てから、必要なら PR を作る。
 
 ### やること
@@ -176,7 +176,7 @@ ${candidate.name} の新しい版がある。いまの版は ${candidate.from} �
 
 ### 受入基準
 
-- [ ] ${candidate.name} の版が ${candidate.to} である
+- [ ] ${candidate.name} のバージョンが ${candidate.to} である
 - [ ] \`mise run validate\` が通る
 
 ### その他
