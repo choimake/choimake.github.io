@@ -167,8 +167,8 @@ export function buildIssue(candidate) {
   const title = `${candidate.name} を ${candidate.from} から ${candidate.to} へ上げる`;
   const body = `### 背景・目的
 
-${candidate.name} の新しいバージョンがある。いまのバージョンは ${candidate.from} である。新しいバージョンは ${candidate.to} である。
-人は、この Issue を見てから、必要なら PR を作る。
+${candidate.name} の新しいバージョン ${candidate.to} が出ている。いま使っているのは ${candidate.from}。
+内容を確認して、必要なら PR を作る。
 
 ### やること
 
@@ -176,12 +176,12 @@ ${candidate.name} の新しいバージョンがある。いまのバージョ�
 
 ### 受入基準
 
-- [ ] ${candidate.name} のバージョンが ${candidate.to} である
+- [ ] ${candidate.name} が ${candidate.to} になっている
 - [ ] \`mise run validate\` が通る
 
 ### その他
 
-週次の依存確認が残した候補である。
+週次の依存確認で見つかった候補。
 
 ${marker}
 `;

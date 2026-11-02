@@ -111,8 +111,10 @@ test("Issue の題は完了条件で、本文に重複防止の印がある", ()
   const issue = buildIssue({ ecosystem: "npm", name: "tailwindcss", from: "4.3.3", to: "4.4.0" });
   assert.equal(issue.title, "tailwindcss を 4.3.3 から 4.4.0 へ上げる");
   assert.deepEqual(issue.labels, []);
-  assert.ok(issue.body.includes("tailwindcss の新しいバージョンがある。いまのバージョンは 4.3.3 である。新しいバージョンは 4.4.0 である。"));
-  assert.ok(issue.body.includes("- [ ] tailwindcss のバージョンが 4.4.0 である"));
+  assert.ok(issue.body.includes("tailwindcss の新しいバージョン 4.4.0 が出ている。いま使っているのは 4.3.3。"));
+  assert.ok(issue.body.includes("内容を確認して、必要なら PR を作る。"));
+  assert.ok(issue.body.includes("- [ ] tailwindcss が 4.4.0 になっている"));
+  assert.ok(issue.body.includes("週次の依存確認で見つかった候補。"));
   assert.ok(issue.body.includes("<!-- deps-propose:npm:tailwindcss -->"));
 });
 
