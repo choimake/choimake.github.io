@@ -109,12 +109,12 @@ test("cdnjs の参照は新しい版があるときだけ候補にする", async
 
 test("Issue の題は完了条件で、本文に重複防止の印がある", () => {
   const issue = buildIssue({ ecosystem: "npm", name: "tailwindcss", from: "4.3.3", to: "4.4.0" });
-  assert.equal(issue.title, "tailwindcss を 4.3.3 から 4.4.0 へ上げる");
+  assert.equal(issue.title, "tailwindcss を 4.3.3 から 4.4.0 に更新する");
   assert.deepEqual(issue.labels, []);
-  assert.ok(issue.body.includes("tailwindcss の新しいバージョン 4.4.0 が出ている。いま使っているのは 4.3.3。"));
-  assert.ok(issue.body.includes("内容を確認して、必要なら PR を作る。"));
-  assert.ok(issue.body.includes("- [ ] tailwindcss が 4.4.0 になっている"));
-  assert.ok(issue.body.includes("週次の依存確認で見つかった候補。"));
+  assert.ok(issue.body.includes("tailwindcss の 4.4.0 が公開されています（現在は 4.3.3 を使用中）。"));
+  assert.ok(issue.body.includes("変更内容を確認し、問題なければ更新用の PR を作成します。"));
+  assert.ok(issue.body.includes("- [ ] tailwindcss が 4.4.0 に更新されている"));
+  assert.ok(issue.body.includes("週次の依存関係チェックで検出されました。"));
   assert.ok(issue.body.includes("<!-- deps-propose:npm:tailwindcss -->"));
 });
 
@@ -143,7 +143,7 @@ test("同じ印の Issue があれば作らず、版が変わったら更新す�
     [{ number: 10, title: same.title, body: same.body }],
   );
   assert.equal(newer[0].action, "update");
-  assert.equal(newer[0].issue.title, "tailwindcss を 4.3.3 から 4.5.0 へ上げる");
+  assert.equal(newer[0].issue.title, "tailwindcss を 4.3.3 から 4.5.0 に更新する");
 });
 
 test("候補から外れた依存の Issue だけを閉じる", () => {
@@ -188,5 +188,6 @@ test("閉じるときはコメントを残してから closed にする", async 
       ["PATCH", "https://api.github.com/repos/o/r/issues/20"],
     ],
   );
+  assert.equal(calls[0].body.body, "週次の依存関係チェックで更新対象から外れたため、この Issue は閉じます。");
   assert.deepEqual(calls[1].body, { state: "closed", state_reason: "completed" });
 });

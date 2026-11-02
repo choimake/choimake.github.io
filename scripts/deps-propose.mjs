@@ -164,24 +164,24 @@ export function actionRepo(action) {
 
 export function buildIssue(candidate) {
   const marker = markerFor(candidate.ecosystem, candidate.name);
-  const title = `${candidate.name} を ${candidate.from} から ${candidate.to} へ上げる`;
-  const body = `### 背景・目的
+  const title = `${candidate.name} を ${candidate.from} から ${candidate.to} に更新する`;
+  const body = `### 概要
 
-${candidate.name} の新しいバージョン ${candidate.to} が出ている。いま使っているのは ${candidate.from}。
-内容を確認して、必要なら PR を作る。
+${candidate.name} の ${candidate.to} が公開されています（現在は ${candidate.from} を使用中）。
+変更内容を確認し、問題なければ更新用の PR を作成します。
 
 ### やること
 
-- [ ] ${candidate.name} を ${candidate.from} から ${candidate.to} へ上げる
+- [ ] ${candidate.name} を ${candidate.from} から ${candidate.to} に更新する
 
-### 受入基準
+### 完了条件
 
-- [ ] ${candidate.name} が ${candidate.to} になっている
+- [ ] ${candidate.name} が ${candidate.to} に更新されている
 - [ ] \`mise run validate\` が通る
 
-### その他
+### 備考
 
-週次の依存確認で見つかった候補。
+週次の依存関係チェックで検出されました。
 
 ${marker}
 `;
@@ -444,7 +444,7 @@ export async function applyWrites({ owner, repo, token, writes, fetchImpl = fetc
       const comment = await fetchImpl(`${issueUrl}/comments`, {
         method: "POST",
         headers,
-        body: JSON.stringify({ body: "週次の依存確認で更新候補から外れたので閉じる。" }),
+        body: JSON.stringify({ body: "週次の依存関係チェックで更新対象から外れたため、この Issue は閉じます。" }),
       });
       if (!comment.ok) {
         throw new Error(`Issue #${write.number} にコメントできない。status=${comment.status}`);
