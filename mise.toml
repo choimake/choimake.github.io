@@ -18,7 +18,7 @@ run = "bundle exec jekyll serve"
 [tasks.validate]
 description = "Build and validate generated HTML"
 depends = ["css"]
-run = "bundle exec jekyll build && npx html-validator _site"
+run = "bundle exec jekyll build && test -s _site/assets/css/tailwind.css && npx html-validator _site"
 
 [tasks.gitleaks]
 description = "Scan secrets including git history"
