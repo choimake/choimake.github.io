@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  html-validate:
     runs-on: ubuntu-latest
 
     steps:

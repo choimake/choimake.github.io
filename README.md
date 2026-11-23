@@ -67,6 +67,13 @@ It checks:
 
 It also closes its own issues for dependencies that are no longer candidates.
 
+Once GitHub auto-merge and the required checks (`jekyll-build`, `html-validate`, `gitleaks`, and `test`) are enabled, opt in when opening a PR that only updates `Gemfile.lock`, `package-lock.json`, or the Node.js and Ruby versions in `mise.toml`:
+```
+gh pr merge <PR number> --auto --squash
+```
+
+Update `tailwindcss` and `@tailwindcss/cli` together. The `html-validate` check rebuilds Tailwind CSS from the locked dependencies and checks that the generated site contains the stylesheet.
+
 To list the candidates locally without creating issues:
 ```
 mise run deps:propose
