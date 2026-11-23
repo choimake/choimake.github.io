@@ -1,6 +1,6 @@
 [tools]
-node = "26.13.0"
-ruby = "4.0.9"
+node = "26.13.1"
+ruby = "4.0.10"
 gitleaks = "8.30.1"
 
 [settings]
